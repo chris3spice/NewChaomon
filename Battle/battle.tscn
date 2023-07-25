@@ -1,0 +1,131 @@
+[gd_scene load_steps=8 format=3 uid="uid://tbcrupmt335"]
+
+[ext_resource type="Script" path="res://Battle/battle.gd" id="1_iyd3d"]
+[ext_resource type="Texture2D" uid="uid://dl44iggh5ap24" path="res://Assets/Art/Battle/battleback1.png" id="2_noxqi"]
+[ext_resource type="Script" path="res://Battle/BattleUI.gd" id="3_n8tgp"]
+[ext_resource type="Resource" uid="uid://rlubw8rfn4la" path="res://Resources/Chaomon/Flyguy/Flydude.tres" id="4_0btut"]
+[ext_resource type="Resource" uid="uid://ohprlqv35bm5" path="res://Resources/Items/Potion.tres" id="4_v3s8v"]
+[ext_resource type="Texture2D" uid="uid://h878l1via6cy" path="res://Assets/Art/Battle/dialogue-box.png" id="5_ib7sq"]
+[ext_resource type="Resource" uid="uid://cub87s8ewjcd6" path="res://Resources/Chaomon/Flyguy/Flyguy.tres" id="7_4eqbh"]
+
+[node name="battle" type="CanvasLayer"]
+script = ExtResource("1_iyd3d")
+battleBackground = ExtResource("2_noxqi")
+playerChaomon = ExtResource("7_4eqbh")
+playerItems = Array[Resource("res://Resources/Scripts/Items/baseItem.gd")]([ExtResource("4_v3s8v")])
+opponentChaomon = ExtResource("4_0btut")
+
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="BattleUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+script = ExtResource("3_n8tgp")
+
+[node name="MenuBackground" type="NinePatchRect" parent="BattleUI"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("5_ib7sq")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI/MenuBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MainMenu" type="GridContainer" parent="BattleUI/MenuBackground/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="fightButton" type="Button" parent="BattleUI/MenuBackground/MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Fight"
+
+[node name="itemButton" type="Button" parent="BattleUI/MenuBackground/MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Items"
+
+[node name="swapButton" type="Button" parent="BattleUI/MenuBackground/MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Swap"
+
+[node name="runButton" type="Button" parent="BattleUI/MenuBackground/MarginContainer/MainMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Run"
+
+[node name="SecondaryBackground" type="NinePatchRect" parent="BattleUI"]
+layout_mode = 0
+offset_top = 256.0
+offset_right = 448.0
+offset_bottom = 360.0
+texture = ExtResource("5_ib7sq")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI/SecondaryBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Moves" type="GridContainer" parent="BattleUI/SecondaryBackground/MarginContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Items" type="GridContainer" parent="BattleUI/SecondaryBackground/MarginContainer"]
+layout_mode = 2
+columns = 10
+
+[node name="Dialog" type="Label" parent="BattleUI/SecondaryBackground/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "This is a test dialog"
+
+[node name="PlayerUnit" type="Node2D" parent="."]
+position = Vector2(128, 128)
+
+[node name="OpponentUnit" type="Node2D" parent="."]
+position = Vector2(512, 128)
+
+[connection signal="pressed" from="BattleUI/MenuBackground/MarginContainer/MainMenu/fightButton" to="BattleUI" method="_on_fight_button_pressed"]
+[connection signal="pressed" from="BattleUI/MenuBackground/MarginContainer/MainMenu/itemButton" to="BattleUI" method="_on_item_button_pressed"]

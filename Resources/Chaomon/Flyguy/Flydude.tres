@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="chaomon" load_steps=6 format=3 uid="uid://rlubw8rfn4la"]
+
+[ext_resource type="Resource" uid="uid://cvkk5ogx821w1" path="res://Resources/Moves/Struggle.tres" id="1_m22qk"]
+[ext_resource type="Script" path="res://Resources/Scripts/Moves/Move.gd" id="2_2x20c"]
+[ext_resource type="Script" path="res://Resources/Scripts/Chaomon/Chaomon.gd" id="2_mm5df"]
+[ext_resource type="Texture2D" uid="uid://cttj1c4nei7sp" path="res://Resources/Chaomon/Flyguy/flyguy.png" id="3_0syx5"]
+
+[sub_resource type="Resource" id="Resource_hljk8"]
+script = ExtResource("2_2x20c")
+level = 1
+power = 10
+experience = 0
+experienceToNextLevel = 0
+name = "Tackle"
+description = "Hit the opponent with your own body"
+accuracy = 100
+moveType = 1
+moveCost = 0
+battleUsage = 0
+
+[resource]
+script = ExtResource("2_mm5df")
+originalOwner = 1
+owner = 1
+level = 10
+maxHp = 50
+currentHp = 50
+maxEnergy = 100
+currentEnergy = 100
+attack = 10
+defense = 10
+speed = 10
+knownMoves = Array[ExtResource("2_2x20c")]([ExtResource("1_m22qk")])
+chaomonID = 1
+name = "Flydude"
+description = "Just a cool dude, you know a Flydude"
+texture = ExtResource("3_0syx5")
+type1 = 2
+type2 = 0
+learnableMoves = Array[Array]([[SubResource("Resource_hljk8"), 1]])

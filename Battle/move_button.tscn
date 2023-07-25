@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://nakpckbp6b2w"]
+
+[ext_resource type="Script" path="res://Battle/move_button.gd" id="1_qcdjl"]
+
+[node name="moveButton" type="Button"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 10
+text = "Tackle
+35"
+script = ExtResource("1_qcdjl")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="move" load_steps=2 format=3 uid="uid://cvkk5ogx821w1"]
+
+[ext_resource type="Script" path="res://Resources/Scripts/Moves/Move.gd" id="1_rl5xh"]
+
+[resource]
+script = ExtResource("1_rl5xh")
+level = 0
+power = 15
+experience = 0
+experienceToNextLevel = 0
+name = "Struggle"
+description = ""
+accuracy = 100
+moveType = 0
+moveCost = 0
+battleUsage = 1

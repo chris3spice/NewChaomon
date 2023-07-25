@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="chaomon" load_steps=6 format=3 uid="uid://cub87s8ewjcd6"]
+
+[ext_resource type="Resource" uid="uid://cvkk5ogx821w1" path="res://Resources/Moves/Struggle.tres" id="1_ep5nb"]
+[ext_resource type="Script" path="res://Resources/Scripts/Chaomon/Chaomon.gd" id="1_kk36o"]
+[ext_resource type="Script" path="res://Resources/Scripts/Moves/Move.gd" id="2_oahjb"]
+[ext_resource type="Texture2D" uid="uid://cttj1c4nei7sp" path="res://Resources/Chaomon/Flyguy/flyguy.png" id="3_cklyx"]
+
+[sub_resource type="Resource" id="Resource_hljk8"]
+script = ExtResource("2_oahjb")
+level = 1
+power = 10
+experience = 0
+experienceToNextLevel = 0
+name = "Tackle"
+description = "Hit the opponent with your own body"
+accuracy = 100
+moveType = 1
+moveCost = 0
+battleUsage = 0
+
+[resource]
+script = ExtResource("1_kk36o")
+originalOwner = 1
+owner = 1
+level = 10
+maxHp = 50
+currentHp = 50
+maxEnergy = 100
+currentEnergy = 100
+attack = 10
+defense = 10
+speed = 10
+knownMoves = Array[ExtResource("2_oahjb")]([ExtResource("1_ep5nb")])
+chaomonID = 1
+name = "Flyguy"
+description = "Just a cool guy, you know a Flyguy"
+texture = ExtResource("3_cklyx")
+type1 = 2
+type2 = 0
+learnableMoves = Array[Array]([[SubResource("Resource_hljk8"), 1]])
